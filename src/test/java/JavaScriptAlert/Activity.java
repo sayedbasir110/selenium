@@ -20,6 +20,8 @@ public class Activity {
         Alert alert = driver.switchTo().alert();
         alert.sendKeys("Sayed Ali Basir");
         alert.accept();
-
+        String message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'You wrote')]"))).getText();
+        System.out.println(message);
+        driver.quit();
     }
 }
