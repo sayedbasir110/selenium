@@ -17,7 +17,8 @@ public class Activity {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(By.id("promptBtn"))).click();
-        Alert alert = driver.switchTo().alert();
+        // Option 2) using method alertIsPresent to wait for popping up the alert and declare it as an Alert variable
+        Alert alert =  wait.until(ExpectedConditions.alertIsPresent());
         alert.sendKeys("Sayed Ali Basir");
         alert.accept();
         String message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(),'You wrote')]"))).getText();
